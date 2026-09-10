@@ -1,0 +1,174 @@
+/* CartPage.css — 購物車頁樣式。配色沿用 App.css：背景 #f7f7f7、白卡、強調色 #ffcc00 */
+
+.cart-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 120px;   /* 底部留白給固定的結帳列 */
+  min-height: 100vh;
+  background: #f7f7f7;
+}
+
+/* 頁首 */
+.cart-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  background: #f7f7f7;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #222;
+}
+
+.back-btn {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #f0f0f0;
+}
+
+/* 清單 */
+.cart-list {
+  margin-top: 16px;
+}
+
+.empty {
+  text-align: center;
+  color: #999;
+  padding: 48px 0;
+}
+
+.cart-subtitle {
+  margin: 20px 0 8px;
+  font-size: 16px;
+  color: #666;
+  border-left: 4px solid #ffcc00;
+  padding-left: 8px;
+}
+
+/* 單列品項 */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+
+.cart-item h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #222;
+}
+
+.cart-item p {
+  margin: 2px 0;
+  font-size: 13px;
+  color: #777;
+}
+
+/* 數量調整 */
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-row button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  color: #333;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qty-row button:hover {
+  background: #f0f0f0;
+}
+
+.qty-row span {
+  min-width: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.qty-row .remove {
+  border-color: #f0b4b4;
+  color: #c0392b;
+  font-size: 16px;
+}
+
+.qty-row .remove:hover {
+  background: #fdeaea;
+}
+
+.item-price {
+  min-width: 72px;
+  text-align: right;
+  font-weight: bold;
+  color: #222;
+}
+
+/* 底部固定結帳列 */
+.cart-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.cart-footer .total {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.checkout-btn,
+.submit-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  background: #ffcc00;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.checkout-btn:hover,
+.submit-btn:hover {
+  background: #f0bf00;
+}

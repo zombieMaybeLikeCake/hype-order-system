@@ -1,0 +1,528 @@
+/* === 現代化 App.css，支援網格/列表切換 === */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f7f7;
+  color: #333;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  background: white;
+  padding: 24px 16px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.banner {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.shop-name {
+  margin: 16px 0 4px;
+  font-size: 28px;
+  color: #222;
+}
+
+.table-info {
+  margin: 0;
+  color: #888;
+}
+
+/* Category header & view toggle */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.view-toggle button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.view-toggle button.active {
+  background: #ffcc00;
+  color: #000;
+  border-color: #ffcc00;
+  font-weight: bold;
+}
+
+/* Category nav */
+.category-nav {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.category-nav button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.category-nav button:hover {
+  background: #ffcc00;
+  border-color: #ffcc00;
+  color: #000;
+}
+
+/* Menu section */
+.menu-section {
+  padding: 24px 16px;
+  background: #fdfdfd;
+  /* background:#000; */
+}
+
+.menu-section h2 {
+  margin-bottom: 16px;
+  font-size: 22px;
+  border-left: 4px solid #ffcc00;
+  padding-left: 10px;
+  color: #444;
+}
+
+.product-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.product-list-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-card.modern.grid {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.product-card.modern.grid:hover {
+  transform: translateY(-4px);
+}
+
+.product-card.modern.list {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+
+.product-card.modern.list .product-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 14px 16px;
+}
+
+.product-info h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #222;
+}
+
+.price {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content.modern {
+  /* 視覺風格 */
+  background: rgba(255, 255, 255, 0.85);   /* 半透明玻璃感 */
+  backdrop-filter: blur(10px);
+  border: 2px solid #d3a76266;             /* 金色 40% 透明 */
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+
+  /* 尺寸（更窄、更精巧） */
+  width: 100%;
+  max-width: 400px;        /* 原本 400‒420 → 改 340 */
+  padding: 24px 20px;
+
+  /* 捲動與定位 */
+  max-height: 50vh;
+  overflow-y: auto;
+  position: relative;
+
+  /* 動畫 */
+  animation: modalPop 0.28s ease-out;
+}
+
+/* 彈跳動畫維持 */
+@keyframes modalPop {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.96); }
+  60%  { opacity: 1; transform: translateY(-4px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+/* 關閉按鈕 hover */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #d3a762;
+}
+
+.modal-img {
+  
+  width: 20%;
+  height: auto; 
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+}
+
+/* 選項 */
+.option-group {
+  margin-top: 20px;
+}
+
+.option-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.counter button {
+  background: #eee;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.option-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pill input[type="radio"] {
+  display: none;
+}
+
+.pill {
+  background: #eee;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.pill input:checked + &,
+.pill input:checked {
+  background: #ffcc00;
+  color: #000;
+  font-weight: 600;
+}
+
+.checkbox-pill {
+  background: #eee;
+  border-radius: 999px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.add-btn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 12px;
+  background: #ffcc00;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.option-group {
+  margin-top: 20px;
+}
+
+.option-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.counter button {
+  background: #eee;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.option-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pill input[type="radio"] {
+  display: none;
+}
+
+.pill {
+  background: #eee;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.pill input[type="radio"]:checked + label,
+.pill input[type="radio"]:checked,
+.pill input:checked + .pill,
+.pill:has(input[type="radio"]:checked) {
+  background: #4da8d6;
+  color: #fff;
+  font-weight: 600;
+}
+
+.checkbox-pill {
+  background: #eee;
+  border-radius: 999px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.checkbox-pill input:checked + span,
+.checkbox-pill input:checked {
+  background: #4da8d6;
+  color: white;
+  font-weight: bold;
+  border-radius: 999px;
+}
+
+.add-btn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 12px;
+  background: #4da8d6;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.cart-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fffbe6;
+  border-top: 2px solid #4da8d6;
+  padding: 16px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  animation: fadeIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.item-info p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-actions button {
+  background: #eee;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.item-actions .remove {
+  color: red;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit-btn {
+  background: #ff9900;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* CartButton.css */
+.modal-content.modern input,
+.modal-content.modern select {
+  width: 100%;
+  padding: 8px 10px;
+  margin: 6px 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+/* === 補充：del-btn / error-box / desc（多個頁面引用但先前未定義） === */
+.del-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.del-btn:hover { background: #c0392b; }
+
+.error-box {
+  background: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.desc {
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}

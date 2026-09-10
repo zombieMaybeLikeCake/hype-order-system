@@ -1,0 +1,63 @@
+.cart-button-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  background-color: #4da8d6;
+  color: #111;
+  padding: 12px 20px;
+  text-align: center;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  cursor: pointer;
+}
+.cart-fixed-button {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+}
+
+.cart-button-bar {
+  width: 100%;
+  background-color: #4da8d6;
+  color: #000;
+  font-weight: bold;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.pill.selected,
+.pill input[type="radio"]:checked + label,
+.pill:has(input[type="radio"]:checked) {
+  background: #ffcc00;
+  color: #000;
+  font-weight: 600;
+}
+
+/* === 客製化彈窗：多選 checkbox-pill 被勾選時的高亮 === */
+.checkbox-pill input:checked + span,
+.checkbox-pill input:checked,
+.checkbox-pill:has(input:checked) {
+  background: #ffcc00;
+  color: #000;
+  font-weight: 600;
+}
+
+/* === 文字客製化 textarea 基本外觀 === */
+.modal-content textarea {
+  border: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}

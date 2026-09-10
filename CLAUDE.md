@@ -45,3 +45,18 @@ Standalone scripts (not imported by the Node server; run via cron/Task Scheduler
 - `monthly_paid_items_export.py` — one workbook per month, one sheet per day, plus a month-end summary sheet of paid items only.
 
 The bar's "business day" spans midnight — it's consistently modeled as **yesterday 12:00 → today 07:00 (Asia/Taipei)**, not a calendar day. Keep this window convention in mind when writing any new report or query against `created_at`/`start_time`.
+
+## Cleanup pass before open-sourcing (2026-09-10)
+
+The repo was extracted from a flat scratch folder and published to GitHub. What changed:
+
+- `server.js` no longer falls back to `'your_secret_key'` when `JWT_SECRET` is unset — it calls `process.exit(1)` instead, across all 11 call sites.
+- CORS went from wide-open (`app.use(cors())`) to closed-by-default; it only opens when `CORS_ORIGIN` is set.
+- The three Python export scripts stopped hardcoding `DB_CONF` credentials and now read `DB_HOST`/`DB_USER`/`DB_PASS`/`DB_NAME` from the same `.env` as `server.js`, via `python-dotenv`.
+- Fixed a real bug: `monthly_paid_items_export.py`'s `parse_extra_charge` was missing the colon-skip rule that `server.js`'s two `parseExtraCharge` implementations already had, so a customization note ending in a digit (e.g. `甜度:正常5`) could be miscounted as a surcharge in the monthly report specifically.
+- `client/src/components/data.js` and `seed_menu_items.sql` were replaced with generic sample menu items/prices — the original files held the bar's real menu and pricing.
+- Added `.env.example` and `.gitignore` (excludes `.env`, `node_modules/`, `client/build/`, `reports/`, `venue_leave_log.txt`, and the internal `部署資訊.md` deployment/credentials doc, which was never added to git).
+- Pinned exact dependency versions in both `package.json` files (were `^`-ranged).
+- Removed dead code (`VenueDayOrders`, an unused component in `AdminXlsxPage.js`) and decorative emoji/star markers from comments; silenced two pre-existing `react-hooks/exhaustive-deps` warnings the same way the codebase already silenced others (`// eslint-disable-next-line`) rather than restructuring the effects.
+- Left out of the repo entirely: `部署資訊.md` (real IP, DB root password, admin login), the `QRCode/` folder (14 real per-table QR images pointing at a now-decommissioned domain), and unrelated personal files (spreadsheets, a GIS shapefile, `menu.pptx`, video-download scripts) that lived alongside this project in the original scratch folder.
+- Verified `node server.js` starts and `npm run build` (client) compiles before pushing.
